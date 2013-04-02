@@ -1,0 +1,535 @@
+>> r = 1000; fac = 10; l_type = 1;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 10000; fac = 10; l_type = 1;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 100; fac = 10; l_type = 2;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 1000; fac = 10; l_type = 2;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 10000; fac = 10; l_type = 2;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 100; fac = 10; l_type = 3;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 1000; fac = 10; l_type = 3;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+r = 10000; fac = 10; l_type = 3;
+[pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2];
+Elapsed time is 102.904033 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        8152           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+        2337           2
+
+complete_test
+
+ans =
+
+       10203           2
+
+new_links
+
+ans =
+
+        2051           2
+
+Correctly predicted link both existing and non existing for r = 1000 link_type= 1 no_of_fact = 10
+TP =
+
+    23
+
+Correctly predicted links non existing for r = 1000 link_type= 1 no_of_fact = 10
+TP =
+
+     3
+
+Elapsed time is 133.453172 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        8152           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+        2337           2
+
+complete_test
+
+ans =
+
+       10203           2
+
+new_links
+
+ans =
+
+        2051           2
+
+Correctly predicted link both existing and non existing for r = 10000 link_type= 1 no_of_fact = 10
+TP =
+
+    24
+
+Correctly predicted links non existing for r = 10000 link_type= 1 no_of_fact = 10
+TP =
+
+     4
+
+Elapsed time is 99.967682 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        5886           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+   974     2
+
+complete_test
+
+ans =
+
+        6786           2
+
+new_links
+
+ans =
+
+   900     2
+
+Correctly predicted link both existing and non existing for r = 100 link_type= 2 no_of_fact = 10
+TP =
+
+     0
+
+Correctly predicted links non existing for r = 100 link_type= 2 no_of_fact = 10
+TP =
+
+     0
+
+Elapsed time is 102.875101 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        5886           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+   974     2
+
+complete_test
+
+ans =
+
+        6786           2
+
+new_links
+
+ans =
+
+   900     2
+
+Correctly predicted link both existing and non existing for r = 1000 link_type= 2 no_of_fact = 10
+TP =
+
+     1
+
+Correctly predicted links non existing for r = 1000 link_type= 2 no_of_fact = 10
+TP =
+
+     0
+
+Elapsed time is 133.218445 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        5886           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+   974     2
+
+complete_test
+
+ans =
+
+        6786           2
+
+new_links
+
+ans =
+
+   900     2
+
+Correctly predicted link both existing and non existing for r = 10000 link_type= 2 no_of_fact = 10
+TP =
+
+     5
+
+Correctly predicted links non existing for r = 10000 link_type= 2 no_of_fact = 10
+TP =
+
+     0
+
+Elapsed time is 99.941428 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+      323976           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+       66378           2
+
+complete_test
+
+ans =
+
+      384165           2
+
+new_links
+
+ans =
+
+       60189           2
+
+Correctly predicted link both existing and non existing for r = 100 link_type= 3 no_of_fact = 10
+TP =
+
+    68
+
+Correctly predicted links non existing for r = 100 link_type= 3 no_of_fact = 10
+TP =
+
+     0
+
+Elapsed time is 102.751271 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+      323976           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+       66378           2
+
+complete_test
+
+ans =
+
+      384165           2
+
+new_links
+
+ans =
+
+       60189           2
+
+Correctly predicted link both existing and non existing for r = 1000 link_type= 3 no_of_fact = 10
+TP =
+
+   666
+
+Correctly predicted links non existing for r = 1000 link_type= 3 no_of_fact = 10
+TP =
+
+     8
+
+Elapsed time is 133.127828 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+      323976           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+       66378           2
+
+complete_test
+
+ans =
+
+      384165           2
+
+new_links
+
+ans =
+
+       60189           2
+
+Correctly predicted link both existing and non existing for r = 10000 link_type= 3 no_of_fact = 10
+TP =
+
+        4364
+
+Correctly predicted links non existing for r = 10000 link_type= 3 no_of_fact = 10
+TP =
+
+    67
+
+results =
+
+  Columns 1 through 6
+
+         100          10           1          10           0       10203
+        1000          10           1          23           3       10203
+       10000          10           1          24           4       10203
+         100          10           2           0           0        6786
+        1000          10           2           1           0        6786
+       10000          10           2           5           0        6786
+         100          10           3          68           0      384165
+        1000          10           3         666           8      384165
+       10000          10           3        4364          67      384165
+
+  Column 7
+
+        2051
+        2051
+        2051
+         900
+         900
+         900
+       60189
+       60189
+       60189
+
+[pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2 tot_all tot_new];
+r = 21540; fac = 10; l_type = 2;
+[pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2 tot_all tot_new];
+r = 21540; fac = 10; l_type = 3;
+[pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2 tot_all tot_new];
+Elapsed time is 201.753069 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        8152           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+        2337           2
+
+complete_test
+
+tot_all =
+
+       10203           2
+
+new_links
+
+tot_new =
+
+        2051
+
+Correctly predicted link both existing and non existing for r = 21540 link_type= 1 no_of_fact = 10
+TP =
+
+    27
+
+Correctly predicted links non existing for r = 21540 link_type= 1 no_of_fact = 10
+TP =
+
+     4
+
+??? Error using ==> vertcat
+CAT arguments dimensions are not consistent.
+ 
+>> r = 21540; fac = 10; l_type = 2;
+[pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
+results = [results; r fac l_type pr1 pr2 tot_all tot_new];
+Elapsed time is 188.299012 seconds.
+train_log
+
+ans =
+
+       21540       21540           9
+
+train_log_collapse.subs
+
+ans =
+
+        5886           2
+
+test_log
+
+ans =
+
+       21540       21540           1
+
+test_log_collapse.subs
+
+ans =
+
+   974     2
+
+complete_test
+
+tot_all =
+
+        6786           2
+
+new_links
+
+tot_new =
+
+   900
+
+Correctly predicted link both existing and non existing for r = 21540 link_type= 2 no_of_fact = 10
+TP =
+
+     9
+
+Correctly predicted links non existing for r = 21540 link_type= 2 no_of_fact = 10
+TP =
+
+     0
+
+
