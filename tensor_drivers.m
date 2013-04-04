@@ -21,6 +21,13 @@ save(output_file,'EQ2_N_way_tensor');
 dim = [21540 21540 3 9];
 final_tensor = sptensor(subt,ones(size(subt,1),1),dim); 
 EQ2_N_way_tensor = final_tensor;
+% Link Statistics
+stats = [];
+for i=1:3 
+    for j =1:9
+        stats = [stats; i j nnz(EQ2_N_way_tensor(:,:,i,j))];
+    end
+end
 % Non-logit code commendted below
 %{
 P = cp_als(EQ2_N_way_tensor,50);
@@ -117,6 +124,24 @@ hold on;
 plot([1:9]',P.U{4}(:,9));
 hold off;
 
+
+% Result evaluation loop
+final_results = [];
+time_compression = 9;
+for fac = 100:-10:90 % factor loop
+    P_fac = cp_als(T_log,fac);
+    for l_type = 1:3 % link type
+        for r = [100 1000 10000 20000] % # of top predictions
+            
+            final_results...            
+             = [final_results;...
+             result_evaluation(l_type,time_compression,fac,r,P_fac,T_log,T_log_test)];
+            
+        end        
+    end    
+end
+
+
 results = [];
 
 % Building result for # of factors = 10
@@ -148,7 +173,6 @@ results = [results; r fac l_type pr1 pr2];
 r = 10000; fac = 10; l_type = 3;
 [pr1, pr2] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results = [results; r fac l_type pr1 pr2];
-
 r = 21540; fac = 10; l_type = 1;
 [pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results = [results; r fac l_type pr1 pr2 tot_all tot_new];
@@ -199,7 +223,6 @@ results_50 = [results_50; r fac l_type pr1 pr2 tot_all tot_new];
 r = 21540; fac = 50; l_type = 3;
 [pr1, pr2, tot_all, tot_new] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results_50 = [results_50; r fac l_type pr1 pr2 tot_all tot_new];
-
 
 % Building result for # of factors = 50
 
@@ -245,7 +268,6 @@ r = 21540; fac = 50; l_type = 3;
 [pr1, pr2, tot_test_links] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results_50 = [results_50; r fac l_type pr1 pr2 tot_test_links];
 
-
 % Building result for # of factors = 10 (NEW)
 
 results_10 = [];
@@ -289,3 +311,32 @@ results_10 = [results_10; r fac l_type pr1 pr2 tot_test_links];
 r = 21540; fac = 10; l_type = 3;
 [pr1, pr2, tot_test_links] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results_10 = [results_10; r fac l_type pr1 pr2 tot_test_links];
+
+
+
+
+
+results_old_10 = [
+         100          10           1          10           0       10203	2051;
+        1000          10           1          23           3       10203	2051;
+       10000          10           1          24           4       10203	2051;
+         100          10           2           0           0        6786	900;
+        1000          10           2           1           0        6786	900;
+       10000          10           2           5           0        6786	900;
+         100          10           3          68           0      384165	60189;
+        1000          10           3         666           8      384165	60189;
+       10000          10           3        4364          67      384165	60189
+]
+
+results_old_50 = [
+         100          50           1          60           1       10203	2051;
+        1000          50           1         156          10       10203	2051;
+       10000          50           1         267          14       10203	2051;
+         100          50           2          13           0        6786	900;
+        1000          50           2          30           0        6786	900;
+       10000          50           2          67           2        6786	900;
+         100          50           3          87           0      384165	60189;
+        1000          50           3         868           3      384165	60189;
+       10000          50           3        6653          29      384165	60189
+    
+]

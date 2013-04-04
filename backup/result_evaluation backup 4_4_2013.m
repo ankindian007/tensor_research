@@ -1,6 +1,4 @@
-function [pred_TP, pred_FP, pred_all_link_TP, pred_all_link_FP, ...
-    pred_new_link_TP,pred_new_link_FP,tot_test_links, tot_all, tot_new]...
-    = result_evaluation(Link_Type,time_compression,No_of_factors,r,P,T_log,T_log_test)
+function [pred_TP, pred_FP, tot_test_links] = result_evaluation(Link_Type,No_of_factors,r,P,T_log,T_log_test)
 %function [pred_all_link, pred_new_link, tot_all, tot_new] = result_evaluation(Link_Type,No_of_factors,r,P,T_log,T_log_test)
 % Link_Type = 1; No_of_factors = 50; r = 100000; 
 N_nodes = 21540; % Size of P_Tot
@@ -10,7 +8,7 @@ tic; % r is the top what # of results we want
 for n = 1:N_nodes
     
     for k = 1:No_of_factors
-        gamma_k =  sum(P.U{4}(1:time_compression,k))/time_compression; % time dim as the average of last 3 steps
+        gamma_k =  sum(P.U{4}(1:3,k))/3; % time dim as the average of last 3 steps
         lambda_k = P.lambda(k);          % lambda
         alpha_k = P.U{3}(Link_Type,k);   % link dim for link type = Link_Type
         temp1 = lambda_k*gamma_k*alpha_k*P.U{1}(n,k)*P.U{2}(:,k) ;
@@ -53,30 +51,35 @@ display('new_links'); tot_new = size(new_links,1)
 pure_test = test_log_collapse.subs;
 display('pure_test'); tot_test_links = size(pure_test,1)
 
+%sum(test_tensor(:,1:2) == top(:,1:2),2)
+% Correctly predicted link both existing and non existing
 
-% Correctly predicted link that are actually there in the test set
-TP = 0;
 top_tuples = top(:,1:2);
 fprintf(['Correctly predicted link for r = %d link_type = %d no_of_fact = %d'],r, Link_Type, No_of_factors);
-TP = sum(ismember(top_tuples,pure_test(:,1:2),'rows'));
-FP = size(top_tuples,1) - TP;
-pred_TP = TP
-pred_FP = FP
-
-% Correctly predicted link both existing and non existing
+TP = sum(ismember(top_tuples,pure_test(:,1:2),'rows'))
+FP = size(top_tuples,1) - TP
+pred_TP = TP;
+pred_FP = FP;
+%{
 TP = 0; 
+for g = 1:size(complete_test,1)
+    if(sum(ismember(top_tuples,complete_test(g,1:2),'rows'))>0)
+       TP = TP + 1; 
+    end
+end
 fprintf(['Correctly predicted link both existing and non existing for r = %d link_type= %d no_of_fact = %d'],r, Link_Type, No_of_factors);
-TP = sum(ismember(top_tuples,complete_test(:,1:2),'rows'));
-FP = size(top_tuples,1) - TP;
-pred_all_link_TP = TP
-pred_all_link_FP = FP
-
+TP
+pred_all_link = TP;
 % Correctly predicted links non existing
-
+top_tuples = top(:,1:2);
 TP = 0; 
+for g = 1:size(new_links,1)
+    if(sum(ismember(top_tuples,new_links(g,1:2),'rows'))>0)
+       TP = TP + 1; 
+    end
+end
 fprintf(['Correctly predicted links non existing for r = %d link_type= %d no_of_fact = %d'],r, Link_Type, No_of_factors);
-TP = sum(ismember(top_tuples,new_links(:,1:2),'rows'));
-FP = size(top_tuples,1) - TP;
-pred_new_link_TP = TP
-pred_new_link_FP = FP
+TP
+pred_new_link = TP;
+%}
 end
