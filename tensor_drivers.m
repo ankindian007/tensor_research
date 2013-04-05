@@ -128,20 +128,36 @@ hold off;
 % Result evaluation loop
 final_results = [];
 time_compression = 9;
-for fac = 100:-10:90 % factor loop
+for fac = 100:-10:10 % factor loop
     P_fac = cp_als(T_log,fac);
     for l_type = 1:3 % link type
         for r = [100 1000 10000 20000] % # of top predictions
             
-            final_results...            
-             = [final_results;...
-             result_evaluation(l_type,time_compression,fac,r,P_fac,T_log,T_log_test)];
+            [pred_TP, pred_FP, pred_all_link_TP, pred_all_link_FP, ...
+            pred_new_link_TP,pred_new_link_FP,tot_test_links, tot_all, tot_new]...
+                = result_evaluation(l_type,time_compression,fac,r,P_fac,T_log,T_log_test)
+            final_results = [final_results; 
+                [pred_TP, pred_FP, pred_all_link_TP, pred_all_link_FP, ...
+            pred_new_link_TP,pred_new_link_FP,tot_test_links, tot_all, tot_new]]
             
         end        
     end    
+    final_results
 end
 
 
+t_res_test = [temp_results(:,1:2) temp_results(:,7)];
+XX = (t_res_test(:,1)./(t_res_test(:,1)+t_res_test(:,2)))*100;
+XX
+t_res_all = [temp_results(:,3:4) temp_results(:,8)]
+YY = (t_res_all(:,1)./(t_res_all(:,1)+t_res_all(:,2)))*100;
+YY
+t_res_new = [temp_results(:,5:6) temp_results(:,9)];
+ZZ= (t_res_new(:,1)./(t_res_new(:,1)+t_res_new(:,2)))*100;
+ZZ
+
+
+%{
 results = [];
 
 % Building result for # of factors = 10
@@ -312,7 +328,7 @@ r = 21540; fac = 10; l_type = 3;
 [pr1, pr2, tot_test_links] = result_evaluation(l_type,fac,r,P_10,T_log,T_log_test); 
 results_10 = [results_10; r fac l_type pr1 pr2 tot_test_links];
 
-
+%}
 
 
 
